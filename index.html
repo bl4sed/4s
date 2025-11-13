@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rizal Firmansyah</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Rizal Firmansyah</h1>
+    <nav>
+      <a href="#about">Tentang</a>
+      <a href="#social">Sosial Media</a>
+      <a href="#game">Game</a>
+    </nav>
+  </header>
+
+  <section id="about" class="card">
+    <img id="profile-img" src="https://i.postimg.cc/GpB7fb60/IMG-20250730-150113-253.webp" alt="Foto Profil">
+    <h2>Halo, saya Rizal Firmansyah 👋</h2>
+    <p>Warna favorit saya adalah <b>hitam dan putih</b>.  
+       Makanan kesukaan saya adalah <b>Mie Ayam</b>.  
+       Website ini dibuat untuk memperkenalkan diri dan sedikit hiburan 🎮</p>
+    <input type="text" id="imgLink" placeholder="Masukkan link foto profil">
+    <button onclick="changeImage()">Ubah Foto Profil</button>
+  </section>
+
+  <section id="social" class="card">
+    <h2>Sosial Media</h2>
+    <div class="social-links">
+      <a href="https://www.instagram.com/bl4sed" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/@rizalfreall" target="_blank">YouTube</a>
+    </div>
+  </section>
+
+  <section id="game" class="card">
+    <h2>Game Tebak Angka</h2>
+    <p>Saya telah memilih angka antara <b>1 dan 10</b>. Coba tebak!</p>
+    <input type="number" id="guessInput" placeholder="Masukkan angka">
+    <button onclick="checkGuess()">Tebak!</button>
+    <p id="result"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Rizal Firmansyah | Website by ChatGPT</p>
+  </footer>
+
+  <script>
+    // --- Ganti foto profil ---
+    function changeImage() {
+      const link = document.getElementById("imgLink").value;
+      if (link) {
+        document.getElementById("profile-img").src = link;
+      }
+    }
+
+    // --- Game Tebak Angka ---
+    const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+    function checkGuess() {
+      const guess = parseInt(document.getElementById("guessInput").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(guess)) {
+        result.textContent = "Masukkan angka yang valid!";
+        return;
+      }
+
+      if (guess === randomNumber) {
+        result.textContent = "🎉 Benar! Kamu menebak dengan tepat!";
+      } else if (guess < randomNumber) {
+        result.textContent = "Terlalu kecil! Coba angka lebih besar.";
+      } else {
+        result.textContent = "Terlalu besar! Coba angka lebih kecil.";
+      }
+    }
+  </script>
+</body>
+      </html>
