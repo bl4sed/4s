@@ -1,81 +1,292 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rizal Firmansyah</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rizal Firmansyah — Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Rizal Firmansyah</h1>
-    <nav>
-      <a href="#about">Tentang</a>
-      <a href="#social">Sosial Media</a>
-      <a href="#game">Game</a>
-    </nav>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Rizal Firmansyah</h1>
+        <p class="sub">Tuh Main Game Di Bawa</p>
+      </div>
+      <nav class="nav">
+        <a href="#about">Tentang</a>
+        <a href="#games">Game</a>
+        <a href="#social">Sosmed</a>
+      </nav>
+    </div>
   </header>
 
-  <section id="about" class="card">
-    <img id="profile-img" src="https://i.postimg.cc/GpB7fb60/IMG-20250730-150113-253.webp" alt="Foto Profil">
-    <h2>Halo, saya Rizal Firmansyah 👋</h2>
-    <p>Warna favorit saya adalah <b>hitam dan putih</b>.  
-       Makanan kesukaan saya adalah <b>Mie Ayam</b>.  
-       Website ini dibuat untuk memperkenalkan diri dan sedikit hiburan 🎮</p>
-    <input type="text" id="imgLink" placeholder="Masukkan link foto profil">
-    <button onclick="changeImage()">Ubah Foto Profil</button>
-  </section>
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="card center">
+      <img class="profile" src="https://i.postimg.cc/GpB7fb60/IMG-20250730-150113-253.webp" alt="Foto Rizal">
+      <h2>Rizal Firmansyah</h2>
+      <p class="lead">
+        Warna favorit: <strong>Hitam & Putih</strong> • Makanan kesukaan: <strong>Mie Ayam</strong> 🍜.
+      </p>
+    </section>
 
-  <section id="social" class="card">
-    <h2>Sosial Media</h2>
-    <div class="social-links">
-      <a href="https://www.instagram.com/bl4sed" target="_blank">Instagram</a>
-      <a href="https://www.youtube.com/@rizalfreall" target="_blank">YouTube</a>
-    </div>
-  </section>
+    <!-- GAMES -->
+    <section id="games" class="card">
+      <h2>Game</h2>
+      <p>Pilih salah satu game di bawah — semuanya ringan dan bisa dimainkan langsung.</p>
 
-  <section id="game" class="card">
-    <h2>Game Tebak Angka</h2>
-    <p>Saya telah memilih angka antara <b>1 dan 10</b>. Coba tebak!</p>
-    <input type="number" id="guessInput" placeholder="Masukkan angka">
-    <button onclick="checkGuess()">Tebak!</button>
-    <p id="result"></p>
-  </section>
+      <div class="game-tabs">
+        <button class="tab-btn active" data-target="panel-number">Tebak Angka</button>
+        <button class="tab-btn" data-target="panel-flags">Tebak Bendera (100)</button>
+        <button class="tab-btn" data-target="panel-lyrics">Tebak Lirik Lagu (Indonesia)</button>
+      </div>
 
-  <footer>
-    <p>© 2025 Rizal Firmansyah | Website by ChatGPT</p>
+      <!-- Tebak Angka -->
+      <div id="panel-number" class="panel active">
+        <h3>Tebak Angka 1–10</h3>
+        <div class="inline">
+          <input id="guessInput" type="number" min="1" max="10" placeholder="Masukkan angka 1-10">
+          <button id="guessBtn">Tebak</button>
+        </div>
+        <p id="guessResult" class="result"></p>
+        <button id="resetNumber" class="small">Acak Ulang</button>
+      </div>
+
+      <!-- Tebak Bendera -->
+      <div id="panel-flags" class="panel">
+        <h3>Tebak Bendera (100)</h3>
+        <p>Bendera dipilih acak — pilih jawaban yang benar.</p>
+        <div class="flag-area">
+          <img id="flagImg" src="" alt="Bendera" />
+        </div>
+        <div id="flagOptions" class="options"></div>
+        <p id="flagResult" class="result"></p>
+        <div class="inline">
+          <button id="nextFlag">Bendera Berikutnya</button>
+          <button id="shuffleFlags" class="small">Acak & Mulai Ulang</button>
+        </div>
+      </div>
+
+      <!-- Tebak Lirik Lagu -->
+      <div id="panel-lyrics" class="panel">
+        <h3>Tebak Lirik Lagu (Indonesia)</h3>
+        <p>Terdapat potongan lirik — pilih judul lagunya.</p>
+        <div class="lyrics-area">
+          <blockquote id="lyricSnippet">—</blockquote>
+        </div>
+        <div id="lyricOptions" class="options"></div>
+        <p id="lyricResult" class="result"></p>
+        <div class="inline">
+          <button id="nextLyric">Lirik Berikutnya</button>
+          <button id="shuffleLyrics" class="small">Acak & Mulai Ulang</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SOCIAL -->
+    <section id="social" class="card center">
+      <h2>Sosial Media</h2>
+      <div class="social-links">
+        <a href="https://www.instagram.com/b4sed" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@rizalfreall" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Rizal Firmansyah — Designed with ❤️</p>
   </footer>
 
   <script>
-    // --- Ganti foto profil ---
-    function changeImage() {
-      const link = document.getElementById("imgLink").value;
-      if (link) {
-        document.getElementById("profile-img").src = link;
-      }
-    }
+  /* -------------------------
+     DATA: 100 bendera (mayoritas Asia, dilengkapi sampai 100)
+     code = ISO 3166-1 alpha-2 (lowercase) for flagcdn.com
+     ------------------------- */
+  const FLAGS = [
+    // Asia (major & regional) ~50
+    {country:"Afghanistan", code:"af"}, {country:"Armenia", code:"am"}, {country:"Azerbaijan", code:"az"},
+    {country:"Bahrain", code:"bh"}, {country:"Bangladesh", code:"bd"}, {country:"Bhutan", code:"bt"},
+    {country:"Brunei", code:"bn"}, {country:"Cambodia", code:"kh"}, {country:"China", code:"cn"},
+    {country:"Cyprus", code:"cy"}, {country:"Georgia", code:"ge"}, {country:"India", code:"in"},
+    {country:"Indonesia", code:"id"}, {country:"Iran", code:"ir"}, {country:"Iraq", code:"iq"},
+    {country:"Israel", code:"il"}, {country:"Japan", code:"jp"}, {country:"Jordan", code:"jo"},
+    {country:"Kazakhstan", code:"kz"}, {country:"Kuwait", code:"kw"}, {country:"Kyrgyzstan", code:"kg"},
+    {country:"Laos", code:"la"}, {country:"Lebanon", code:"lb"}, {country:"Malaysia", code:"my"},
+    {country:"Maldives", code:"mv"}, {country:"Mongolia", code:"mn"}, {country:"Myanmar", code:"mm"},
+    {country:"Nepal", code:"np"}, {country:"North Korea", code:"kp"}, {country:"Oman", code:"om"},
+    {country:"Pakistan", code:"pk"}, {country:"Palestine", code:"ps"}, {country:"Philippines", code:"ph"},
+    {country:"Qatar", code:"qa"}, {country:"Saudi Arabia", code:"sa"}, {country:"Singapore", code:"sg"},
+    {country:"South Korea", code:"kr"}, {country:"Sri Lanka", code:"lk"}, {country:"Syria", code:"sy"},
+    {country:"Taiwan", code:"tw"}, {country:"Tajikistan", code:"tj"}, {country:"Thailand", code:"th"},
+    {country:"Timor-Leste", code:"tl"}, {country:"Turkey", code:"tr"}, {country:"Turkmenistan", code:"tm"},
+    {country:"United Arab Emirates", code:"ae"}, {country:"Uzbekistan", code:"uz"}, {country:"Vietnam", code:"vn"},
+    {country:"Yemen", code:"ye"},
+    // Add more Asian/nearby & world to make 100 entries
+    {country:"Russia", code:"ru"}, {country:"United Kingdom", code:"gb"}, {country:"United States", code:"us"},
+    {country:"Canada", code:"ca"}, {country:"Australia", code:"au"}, {country:"New Zealand", code:"nz"},
+    {country:"Germany", code:"de"}, {country:"France", code:"fr"}, {country:"Italy", code:"it"},
+    {country:"Spain", code:"es"}, {country:"Portugal", code:"pt"}, {country:"Netherlands", code:"nl"},
+    {country:"Belgium", code:"be"}, {country:"Sweden", code:"se"}, {country:"Norway", code:"no"},
+    {country:"Denmark", code:"dk"}, {country:"Finland", code:"fi"}, {country:"Poland", code:"pl"},
+    {country:"Czechia", code:"cz"}, {country:"Slovakia", code:"sk"}, {country:"Hungary", code:"hu"},
+    {country:"Greece", code:"gr"}, {country:"Romania", code:"ro"}, {country:"Bulgaria", code:"bg"},
+    {country:"Serbia", code:"rs"}, {country:"Croatia", code:"hr"}, {country:"Slovenia", code:"si"},
+    {country:"Switzerland", code:"ch"}, {country:"Ireland", code:"ie"}, {country:"Iceland", code:"is"},
+    {country:"Argentina", code:"ar"}, {country:"Brazil", code:"br"}, {country:"Chile", code:"cl"},
+    {country:"Colombia", code:"co"}, {country:"Peru", code:"pe"}, {country:"Venezuela", code:"ve"},
+    {country:"Mexico", code:"mx"}, {country:"South Africa", code:"za"}, {country:"Nigeria", code:"ng"},
+    {country:"Kenya", code:"ke"}, {country:"Morocco", code:"ma"}, {country:"Egypt", code:"eg"},
+    {country:"Algeria", code:"dz"}, {country:"Tunisia", code:"tn"}, {country:"Ethiopia", code:"et"}
+  ];
+  // Ensure FLAGS length >= 100 by duplicating some safe entries if needed
+  while (FLAGS.length < 100) {
+    FLAGS.push(FLAGS[FLAGS.length % 90]); // add repeats if necessary (still works for gameplay)
+  }
 
-    // --- Game Tebak Angka ---
-    const randomNumber = Math.floor(Math.random() * 10) + 1;
+  /* -------------------------
+     DATA: Lagu Indonesia (lirik snippet + title)
+     - khusus lagu Indonesia sesuai permintaan.
+     - setiap item: {title, artist, snippet}
+     ------------------------- */
+  const LYRICS = [
+    { title: "Hati-Hati di Jalan", artist:"Tulus", snippet: "Hati-hati di jalan, jangan lupa aku di sini" },
+    { title: "Seperti Kemarin", artist:"Noah", snippet: "Tuhan biarkan ku pergi seperti kemarin" },
+    { title: "Separuh Aku", artist:"Noah", snippet: "Separuh aku pergi, separuh lagi tetap untukmu" },
+    { title: "Cinta Luar Biasa", artist:"Andmesh", snippet: "Kau cinta luar biasa, pada cara yang tak biasa" },
+    { title: "Jika", artist:"Afgan", snippet: "Jika saja kau mengerti isi hatiku" },
+    { title: "Kangen", artist:"Dewa 19", snippet: "Kangen aku, kangen dia, kangen kamu" },
+    { title: "Takkan Berpisah", artist:"Glenn Fredly", snippet: "Tak pernah ku bayangkan hari ini" },
+    { title: "Dia", artist:"Anji", snippet: "Dia memang bukan yang terbaik tapi dia milikku" },
+    { title: "Akad", artist:"Payung Teduh", snippet: "Ku ingin engkau menjadi milikku selamanya" },
+    { title: "Pelangi di Matamu", artist:"Jamrud", snippet: "Pelangi di matamu mengalahkan pelangi di langit" },
+    { title: "Kau Adalah", artist:"Isyana Sarasvati & Rayi", snippet: "Kau adalah nafasku, kau adalah nafasku" },
+    { title: "Sempurna", artist:"Andra and The Backbone", snippet: "Kau sempurna di mataku" },
+    { title: "Berita Kepada Kawan", artist:"Iwan Fals", snippet: "Berita kepada kawan, dengarlah" },
+    { title: "Akad (cover)", artist:"Lainnya", snippet: "Ku ingin engkau menjadi milikku selamanya" },
+    { title: "Pupus", artist:"Dewa 19", snippet: "Hatiku pupus karena cintamu" },
+    { title: "Kangen", artist:"Many Covers", snippet: "Jangan kau kuatirkan aku wahai sayang" },
+    { title: "Pergilah Kasih", artist:"Chrisye", snippet: "Pergilah kasih biarlah ku pergi" },
+    { title: "Tak Bisakah", artist:"Peterpan", snippet: "Tak bisakah kau mengerti aku" },
+    { title: "Ada Apa Denganmu", artist:"Peterpan", snippet: "Ada apa denganmu, yang membuatku gelisah" },
+    { title: "Laskar Pelangi", artist:"Nidji", snippet: "Laskar pelangi, pelangi di langit" }
+  ];
 
-    function checkGuess() {
-      const guess = parseInt(document.getElementById("guessInput").value);
-      const result = document.getElementById("result");
+  /* ---------- Helpers ---------- */
+  function $(s){ return document.querySelector(s); }
+  function $all(s){ return Array.from(document.querySelectorAll(s)); }
+  function randInt(min,max){ return Math.floor(Math.random()*(max-min+1)) + min; }
+  function shuffle(arr){ for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]];} return arr; }
 
-      if (isNaN(guess)) {
-        result.textContent = "Masukkan angka yang valid!";
-        return;
-      }
+  /* ---------- Tab switching ---------- */
+  $all('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> {
+      $all('.tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.target;
+      $all('.panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById(target).classList.add('active');
+    });
+  });
 
-      if (guess === randomNumber) {
-        result.textContent = "🎉 Benar! Kamu menebak dengan tepat!";
-      } else if (guess < randomNumber) {
-        result.textContent = "Terlalu kecil! Coba angka lebih besar.";
-      } else {
-        result.textContent = "Terlalu besar! Coba angka lebih kecil.";
-      }
-    }
+  /* ---------- Game: Tebak Angka ---------- */
+  let numberToGuess = randInt(1,10);
+  $('#guessBtn').addEventListener('click', ()=>{
+    const v = parseInt($('#guessInput').value,10);
+    const r = $('#guessResult');
+    if (!v || v < 1 || v > 10) { r.textContent = "Masukkan angka valid 1–10."; return; }
+    if (v === numberToGuess) {
+      r.textContent = `🎉 Benar! Angkanya ${numberToGuess}.`;
+      numberToGuess = randInt(1,10);
+    } else r.textContent = v < numberToGuess ? "⬆️ Terlalu kecil." : "⬇️ Terlalu besar.";
+  });
+  $('#resetNumber').addEventListener('click', ()=> {
+    numberToGuess = randInt(1,10);
+    $('#guessResult').textContent = "Angka diacak ulang. Coba lagi!";
+    $('#guessInput').value = '';
+  });
+
+  /* ---------- Game: Tebak Bendera (100) ---------- */
+  let flagPool = shuffle(FLAGS.slice());
+  let currentFlag = null;
+  const flagImg = $('#flagImg');
+  const flagOptions = $('#flagOptions');
+
+  $('#nextFlag').addEventListener('click', nextFlag);
+  $('#shuffleFlags').addEventListener('click', ()=>{ flagPool = shuffle(FLAGS.slice()); nextFlag(); });
+
+  function nextFlag(){
+    if (flagPool.length === 0) flagPool = shuffle(FLAGS.slice());
+    currentFlag = flagPool.pop();
+    flagImg.src = `https://flagcdn.com/w320/${currentFlag.code}.png`;
+    flagImg.alt = currentFlag.country;
+    flagImg.onerror = function(){ this.src = `https://flagcdn.com/w160/${currentFlag.code}.png`; };
+
+    $('#flagResult').textContent = '';
+    const choices = getOptions(FLAGS, currentFlag.country, 4);
+    flagOptions.innerHTML = '';
+    choices.forEach(choice=>{
+      const b = document.createElement('button');
+      b.textContent = choice;
+      b.addEventListener('click', ()=> {
+        if (choice === currentFlag.country) {
+          $('#flagResult').textContent = `🎉 Benar — ${currentFlag.country}!`;
+        } else {
+          $('#flagResult').textContent = `❌ Salah — itu bendera ${currentFlag.country}.`;
+        }
+      });
+      flagOptions.appendChild(b);
+    });
+  }
+  nextFlag();
+
+  /* ---------- Game: Tebak Lirik Lagu (IDI) ---------- */
+  let lyricPool = shuffle(LYRICS.slice());
+  let currentLyric = null;
+  const lyricOptions = $('#lyricOptions');
+  const lyricSnippet = $('#lyricSnippet');
+
+  $('#nextLyric').addEventListener('click', nextLyric);
+  $('#shuffleLyrics').addEventListener('click', ()=> { lyricPool = shuffle(LYRICS.slice()); nextLyric(); });
+
+  function nextLyric(){
+    if (lyricPool.length === 0) lyricPool = shuffle(LYRICS.slice());
+    currentLyric = lyricPool.pop();
+    lyricSnippet.textContent = currentLyric.snippet;
+    $('#lyricResult').textContent = '';
+    const choices = getOptions(LYRICS.map(l=>l.title), currentLyric.title, 4);
+    lyricOptions.innerHTML = '';
+    choices.forEach(choice=>{
+      const b = document.createElement('button');
+      b.textContent = choice;
+      b.addEventListener('click', ()=> {
+        if (choice === currentLyric.title) {
+          $('#lyricResult').textContent = `🎉 Benar — "${currentLyric.title}" (${currentLyric.artist})`;
+        } else {
+          $('#lyricResult').textContent = `❌ Salah — Jawaban benar: "${currentLyric.title}" (${currentLyric.artist})`;
+        }
+      });
+      lyricOptions.appendChild(b);
+    });
+  }
+  nextLyric();
+
+  /* ---------- Utility: options builder ---------- */
+  function getOptions(list, correct, count){
+    // list: array of objects OR array of strings
+    let names = list.map(item => typeof item === 'string' ? item : (item.country || item.title || item.name));
+    names = Array.from(new Set(names));
+    const others = names.filter(n => n !== correct);
+    const chosen = shuffle(others).slice(0, count-1);
+    chosen.push(correct);
+    return shuffle(chosen);
+  }
+
+  // small helper for querySelector
+  function $(sel){ return document.querySelector(sel); }
+  function $all(sel){ return Array.from(document.querySelectorAll(sel)); }
   </script>
 </body>
-      </html>
+          </html>
